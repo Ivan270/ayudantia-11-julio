@@ -33,6 +33,10 @@ npm run build
 
 ### Documentación:
 - [Vue Class and Style Binding](https://v2.vuejs.org/v2/guide/class-and-style.html)  
+- [Propiedades computadas](https://vuejs.org/guide/essentials/computed.html)  
+- [Operador condicional (ternario)](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Conditional_operator)  
 - [Renderizado de listas (v-for)](https://vuejs.org/guide/essentials/list.html)  
-- [Renderizado condicional](https://vuejs.org/guide/essentials/conditional.html)  
-- [CSS Grid - place-content-center](https://developer.mozilla.org/en-US/docs/Web/CSS/place-content) 
+- [Renderizado condicional (v-if - v-show)](https://vuejs.org/guide/essentials/conditional.html)  
+- [Props (comunicación de componente padre a hijo)](https://vuejs.org/guide/components/props.html)  
+- [Emits - Eventos de componente (comunicación de componente hijo a padre)](https://vuejs.org/guide/components/events.html) 
+- [Operador Spread '...'](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Spread_syntax) 

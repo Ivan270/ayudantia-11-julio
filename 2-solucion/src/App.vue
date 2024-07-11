@@ -1,31 +1,32 @@
 <template>
   <h1>Home</h1>
   <main class="container">
+    <!-- Seccion reserva de citas -->
     <section class="mb-5">
       <form class="border rounded-3 p-4" @submit.prevent="crearCita">
         <div class="row mb-3">
           <div class="col-3">
-            <label for="paciente" :class="[!currentAppointment.paciente ? 'text-danger' : '']">Paciente</label>
-            <input type="text" class="form-control" id="paciente" v-model="currentAppointment.paciente">
+            <label for="paciente" :class="[!citaActual.paciente ? 'text-danger' : '']">Paciente</label>
+            <input type="text" class="form-control" id="paciente" v-model="citaActual.paciente">
           </div>
           <div class="col-2">
-            <label for="fecha" :class="[!currentAppointment.fecha ? 'text-danger' : '']">Fecha</label>
-            <input type="date" class="form-control" id="fecha" v-model="currentAppointment.fecha">
+            <label for="fecha" :class="[!citaActual.fecha ? 'text-danger' : '']">Fecha</label>
+            <input type="date" class="form-control" id="fecha" v-model="citaActual.fecha">
           </div>
           <div class="col-2">
-            <label for="hora" :class="[!currentAppointment.hora ? 'text-danger' : '']">Hora</label>
-            <input type="time" class="form-control" id="hora" v-model="currentAppointment.hora">
+            <label for="hora" :class="[!citaActual.hora ? 'text-danger' : '']">Hora</label>
+            <input type="time" class="form-control" id="hora" v-model="citaActual.hora">
           </div>
           <div class="col-2">
-            <label for="gravedad" :class="[!currentAppointment.gravedad ? 'text-danger' : '']">Gravedad</label>
-            <select class="form-control" id="gravedad" v-model="currentAppointment.gravedad">
+            <label for="gravedad" :class="[!citaActual.gravedad ? 'text-danger' : '']">Gravedad</label>
+            <select class="form-control" id="gravedad" v-model="citaActual.gravedad">
               <option disabled value="" selected>Selecciona una opción</option>
               <option :value="gravedad" v-for="(gravedad, index) in gravedades" :key="index">{{ gravedad }}</option>
             </select>
           </div>
           <div class="col-3">
-            <label for="motivo" :class="[!currentAppointment.motivo ? 'text-danger' : '']">Motivo</label>
-            <input type="text" class="form-control" id="motivo" v-model="currentAppointment.motivo">
+            <label for="motivo" :class="[!citaActual.motivo ? 'text-danger' : '']">Motivo</label>
+            <input type="text" class="form-control" id="motivo" v-model="citaActual.motivo">
           </div>
         </div>
         <div class="d-flex justify-content-center">
@@ -34,6 +35,7 @@
       </form>
     </section>
 
+    <!-- Seccion de citas -->
     <section>
       <div v-if="citas.length">
         <div class="row">
@@ -56,7 +58,7 @@ export default {
   name: 'App',
   data() {
     return {
-      currentAppointment: {
+      citaActual: {
         paciente: '',
         fecha: '',
         hora: '',
@@ -69,15 +71,26 @@ export default {
   },
   computed: {
     buttonDisabled() {
-      return !this.currentAppointment.paciente || !this.currentAppointment.fecha || !this.currentAppointment.hora || !this.currentAppointment.gravedad || !this.currentAppointment.motivo;
+      return !this.citaActual.paciente || !this.citaActual.fecha || !this.citaActual.hora || !this.citaActual.gravedad || !this.citaActual.motivo;
     }
   },
   methods: {
     crearCita() {
-      let newCita = { ...this.currentAppointment };
+      // Operador spread, permite crear una copia literal (CLON) del objeto citaActual, pero la variable apuntará a una nueva instancia permitiendo realizar modificaciones sin afectar el objeto original.
+      // Importante conocer la diferencia con rest operator, aunque se ven igual.
+      /* 
+      Ej: function sum(...theArgs) {
+            let total = 0;
+            for (const arg of theArgs) {
+              total += arg;
+            }
+            return total;
+          }
+      */
+      let newCita = { ...this.citaActual };
       this.citas.push(newCita);
       // Vaciar formulario
-      this.currentAppointment = {
+      this.citaActual = {
         paciente: '',
         fecha: '',
         hora: '',

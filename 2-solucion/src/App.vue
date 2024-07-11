@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     crearCita() {
-      // Operador spread, permite crear una copia literal (CLON) del objeto citaActual, pero la variable apuntará a una nueva instancia permitiendo realizar modificaciones sin afectar el objeto original.
+      // Operador spread, permite crear una copia literal (CLON) del objeto citaActual, pero la variable apuntará a una nueva instancia permitiendo realizar modificaciones sin afectar el objeto original. Ojo que esto funciona bien solo cuando el objeto en cuestión solo contiene datos primitivos (undefined, null, string, number, boolean).
       // Importante conocer la diferencia con rest operator, aunque se ven igual.
       /* 
       Ej: function sum(...theArgs) {
